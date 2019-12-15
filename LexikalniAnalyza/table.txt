@@ -1,0 +1,59 @@
+#prime hodnoty
+0.x.x.x v_int;# cislo
+1.x.x.x v_char;# znak
+2.x.x.x v_bl;# bool hodnoty false a true
+3.x.x.x v_str;# string hod., kde x je hodnota ascii kazdeho znaku
+#deklarace promenych a jejich nazev, kde "x"
+#predstavuje cislo reprezentujici nazev identifikatoru
+4.x.x.x i_int;# identifikator pro int
+5.x.x.x i_intc;# identifikator pro int const
+6.x.x.x i_char;# identifikator pro char
+7.x.x.x i_charc;# identifikator pro char const
+8.x.x.x i_bl;# identifikator pro boolean
+9.x.x.x i_blc;# identifikator pro boolean const
+10.x.x.x i_str;# identifikator pro string
+11.x.x.x i_strc;# identifikator pro string const
+#funkce
+12.x.x.x f_int;# function s navratovou hodnotou int
+13.x.x.x f_char;# function s navratovou hodnotou char
+14.x.x.x f_bl;# function s navratovou hodnotou boolean
+15.x.x.x f_str;# function s navratovou hodnotou string
+#operandy 127.1.0.x
+127.1.0.0 o_=;# prirazeni =
+127.1.0.1 o_==;# porovnani ==
+127.1.0.2 o_+;# soucet +
+127.1.0.3 o_-;# odpocet -
+127.1.0.4 o_*;# nasobeni *
+127.1.0.5 o_/;# deleni /
+127.1.0.6 o_>;# vetsi >
+127.1.0.7 o_>=;# vetsi ci rovno >=
+127.1.0.8 o_<;# mensi
+127.1.0.9 o_<=;# mensi ci rovno <=
+127.1.0.10 o_&&;# logicky AND
+127.1.0.11 o_||;# logicky OR
+127.1.0.12 o_!;# negace !
+#zavorky a specialni znaky 127.2.0.x
+127.2.0.0 sz_com;# ukoncovaci znak prikazu ; 
+127.2.0.1 sz_{;# slozena zavorka oteviraci
+127.2.0.2 sz_};# slozena zavorka zaviraci
+127.2.0.3 sz_(;# zavorka oteviraci
+127.2.0.4 sz_);# zavorka zaviraci
+127.2.0.5 sz_[;# hranata zavorka oteviraci
+127.2.0.6 sz_];# hranata zavorka zaviraci
+127.2.0.7 sz_quo;# uvozovky
+127.2.0.8 sz_cms;# komentar jednoradkovy 
+127.2.0.9 sz_,;# oddelovaci carka
+#cykly 127.3.0.x
+127.3.0.0 l_for;# for cyklus
+127.3.0.1 l_whi;# while cyklus
+127.3.0.2 l_do;# do cyklus
+#podminky 127.4.0.x
+127.4.0.0 c_if;# if podminka
+127.4.0.1 c_el;# else podminka
+127.4.0.2 c_sw;# switch
+127.4.0.3 c_ca;# case
+127.4.0.4 c_br;# break
+#vicenasobne prirazeni 127.5.0.x
+127.5.0.0 ma_sp;# seriove prirazeni
+127.5.0.1 ma_pp;# paralelni prirazeni
+
