@@ -1,0 +1,25 @@
+PROGRAM 	-> 	BLOK
+BLOK 		-> 	[IDENTIFIKÁTOR = HODNOTA | e]
+				[FCE {BLOK NAVRAT}]
+				[PŘÍKAZ]
+		
+HODNOTA 	-> 	cislo | "ŘETĚZEC"
+ŘETĚZEC 	-> 	<a-z> ŘETĚZEC | e
+IDENTIFIKÁTOR -> numvar | numconst | boolvar | boolconst | stringvar | stringconst | charvar | charconst
+FCE 		-> 	void | char | bool | string | num
+NAVRAT 		-> 	return | e
+PŘÍKAZ  	-> 	[IDENTIFIKÁTOR = VÝRAZ | FCE]
+			->	IF-VETEV | IF-VETEV ELSE-VETEV
+			-> 	[while (PODMÍNKA) { PŘÍKAZ }]
+			->  [for (PODMÍNKA) { PŘÍKAZ }]
+			-> 	[switch (identifikátor) {
+					[case (HODNOTA) {PŘÍKAZ break}]
+				}]
+			
+IF-VETEV 	-> [if (PODMÍNKA) {PŘÍKAZ}]
+ELSE-VETEV 	-> [else {příkaz}]
+
+podmínka 	-> odd výraz | výraz [ "=" | "<>" | "<" | ">" | "<=" | ">=" ] výraz
+výraz    	-> [ "+" | "-" | e ] term { [ "+" | "-" ] term }
+term     	-> faktor { [ "*" | "/" ] faktor }
+faktor   	-> identifikátor | číslo | "(" výraz ")"
