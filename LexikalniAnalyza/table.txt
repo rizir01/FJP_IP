@@ -1,7 +1,5 @@
 #prime hodnoty
-0.x.x.x v_int;# cislo
-1.x.x.x v_char;# znak
-2.x.x.x v_bl;# bool hodnoty false a true
+0.0.0.x v_byte;# cislo
 3.x.x.x v_str;# string hod., kde x je hodnota ascii kazdeho znaku
 #deklarace promenych a jejich nazev, kde "x"
 #predstavuje cislo reprezentujici nazev identifikatoru
@@ -32,6 +30,9 @@
 127.1.0.10 o_&&;# logicky AND
 127.1.0.11 o_||;# logicky OR
 127.1.0.12 o_!;# negace !
+127.1.0.13 o_?;# ternarni operator
+127.1.0.14 o_u-;# unarni minus
+127.1.0.15 o_!=;# nerovna se
 #zavorky a specialni znaky 127.2.0.x
 127.2.0.0 sz_com;# ukoncovaci znak prikazu ; 
 127.2.0.1 sz_{;# slozena zavorka oteviraci
@@ -43,6 +44,7 @@
 127.2.0.7 sz_quo;# uvozovky
 127.2.0.8 sz_cms;# komentar jednoradkovy 
 127.2.0.9 sz_,;# oddelovaci carka
+127.2.0.10 sz_:;# dojtecka pro ternarni operator
 #cykly 127.3.0.x
 127.3.0.0 l_for;# for cyklus
 127.3.0.1 l_whi;# while cyklus
