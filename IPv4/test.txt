@@ -1,0 +1,21 @@
+i_intc:0 o_= v_byte:1 sz_com
+i_int:1  o_= v_byte:1 sz_com
+
+f_int:1  
+sz_{ 
+	i_int:1 o_= v_byte:0 sz_com
+	sz_ret i_int:1 sz_com
+sz_}
+
+f_int:2  
+sz_{ 
+	i_int:1 o_= v_byte:0 sz_com
+	sz_ret i_int:1 sz_com
+sz_}
+
+
+f_int:0
+sz_{
+	i_int:1 o_= v_byte:1 sz_com
+	f_int:1 sz_com
+sz_}
