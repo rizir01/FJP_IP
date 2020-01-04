@@ -7,8 +7,7 @@ program : blok;
 
 blok : deklarace_promennych funkce* hlavni_funkce;
 
-//TODO
-deklarace_promennych : dekl_konstanta* dekl_promenna*;
+deklarace_promennych : (dekl_konstanta | dekl_promenna)*;
 
 dekl_konstanta: 	konstanta 	ident_prirazeni hodnota 'sz_com';
 
@@ -31,10 +30,7 @@ hodnota : 'v_byte:' NUM;
 
 hlavni_funkce : 'f_int:0' kod;
 funkce: 'f_int:' NUM kod | 'f_char:' NUM kod | 'f_bl:' NUM kod; 
-
-
-//TODO
-kod : 'sz_{' telo  (ret 'sz_com')? 'sz_}';
+kod : 'sz_{' telo  (ret 'sz_com') 'sz_}';
 
 telo: prikaz*;
 
@@ -43,15 +39,14 @@ prikaz: volani_fce 'sz_com' | prirazovani 'sz_com' | podminky | cykly;
 volani_fce : 'f_int:' NUM | 'f_char:' NUM | 'f_bl:' NUM;
 prirazovani : norm_prirazeni | tern_prirazeni | paralel_prirazeni | nasob_prirazeni;
 
-// musi byt cely vyraz - aby bylo mozne priradit vysledek funkce hodnota | identifikator | funkce
-norm_prirazeni : 	promenna ident_prirazeni hodnota;
-tern_prirazeni : 	promenna ident_prirazeni podminka 'o_?' hodnota 'sz_:' hodnota;
-paralel_prirazeni : promenne ident_prirazeni hodnoty;
-//leva strana identifikatory a mezi nimi nemá bıt èárka, ale =
-nasob_prirazeni : 	promenne ident_prirazeni hodnota;
+norm_prirazeni : 	promenna ident_prirazeni vyraz;
+tern_prirazeni : 	promenna ident_prirazeni podminka 'o_?' vyraz 'sz_:' vyraz;
+paralel_prirazeni : promenne_paralel ident_prirazeni hodnoty;
+nasob_prirazeni : 	promenne_nasob ident_prirazeni hodnota;
 
 //pokud mam jednu promennou u paralelniho prirazeni = norm_prirazeni - otestovat
-promenne : promenna | promenne 	'sz_,' promenne;
+promenne_nasob : promenna 	| promenne_nasob 	'o_=' 	promenne_nasob;
+promenne_paralel: promenna 	| promenne_paralel 	'sz_,' 	promenne_paralel;
 hodnoty  : hodnota  | hodnoty 	'sz_,'  hodnoty;
 
 podminky: if_vetev ;
@@ -68,12 +63,14 @@ for_d:  'l_for-';
 while_c: 'l_whi' 'sz_(' podminka 'sz_)' 'sz_{' prikaz* 'sz_}';
 do_while_c: 'l_do' 'sz_{' prikaz* 'sz_}' 'l_whi' 'sz_(' podminka 'sz_)' 'sz_com';
 
-ret: 'sz_ret' ?faktor;
+ret: 'sz_ret' ?vyraz;
 
 podminka 	: vyraz o_porovnani vyraz;
 vyraz 		: (o_scitace)? term ((o_scitace | 'o_||') term)*;
 term 		: faktor ((o_nasobice | 'o_&&') faktor)*;
-faktor   	: hodnota | promenna | 'sz_(' vyraz 'sz_)';
+faktor   	: hodnota | identifikator | 'sz_(' vyraz 'sz_)';
+
+identifikator : volani_fce | promenna;
 
 o_porovnani : 'o_==' | 'o_>' | 'o_>=' | 'o_<' | 'o_<=' | 'o_!=';
 o_scitace : 'o_+' | 'o_-' | 'o_u-';
@@ -84,5 +81,4 @@ o_logicke : 'o_&&' | 'o_||';
 ident_prirazeni : 'o_=';
     
 NUM : [0-9]+;
-BOOL : [0-1];
 WS : [ \t\r\n]+ -> skip ;// skip spaces, tabs, newlines
